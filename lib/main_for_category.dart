@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 // More details at http://dart-lang.github.io/linter/lints/avoid_relative_lib_imports.html
 import 'category.dart';
 
-// TODO: Pass this information into your custom [Category] widget
 const _categoryName = 'Cake';
 const _categoryIcon = Icons.cake;
 const _categoryColor = Colors.deepOrange;

@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/category.dart';
+import 'unit.dart';
 
 final _backgroundColor = Colors.green[100];
 
@@ -49,15 +50,27 @@ class CategoryRoute extends StatelessWidget {
     );
   }
 
+  List<Unit> _retrieveUnitList(String categoryName) {
+    return List.generate(10, (int i) {
+      i += 1;
+      return Unit(
+        name: '$categoryName Unit $i',
+        conversion: i.toDouble(),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final categories = <Category>[];
 
     for (var i = 0; i < _categoryNames.length; i++) {
       categories.add(Category(
-          name: _categoryNames[i],
-          color: _baseColors[i],
-          iconLocation: Icons.backup));
+        name: _categoryNames[i],
+        color: _baseColors[i],
+        iconLocation: Icons.backup,
+        units: _retrieveUnitList(_categoryNames[i]),
+      ));
     }
 
     // from above. Use a placeholder icon, such as `Icons.cake` for each
@@ -82,6 +95,10 @@ class CategoryRoute extends StatelessWidget {
     return Scaffold(
       appBar: appBar,
       body: listView,
+      floatingActionButton: FloatingActionButton(
+        child: Text('Pop'),
+        onPressed: () => print('Floating Action Button Pressed'),
+      ),
     );
   }
 }
